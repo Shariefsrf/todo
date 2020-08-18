@@ -12,8 +12,51 @@ resetButton.addEventListener('click', () =>
 
 
 function addItem() {
-    console.log('add button clicked');
-   
+    let first = document.getElementById('input');
+    let val = first.value;
+    let textnode = document.createTextNode(val);
+
+    if (val === '') {
+        let para = document.createElement('p')
+        para.textContent = 'hey you have to enter a todo'
+        var any = document.getElementById('container')
+        add.insertAdjacentElement('afterend', para)
+
+
+
+        setTimeout(() => {
+            para.style.opacity = '0';
+            para.remove()
+        }, 1000);
+
+
+
+
+    } else {
+        let li = document.createElement('li');
+        // li.setAttribute('class', 'mycheck')
+
+        let input = document.createElement('input');
+        input.type = 'checkbox';
+        input.setAttribute('id', 'check');
+
+        let label = document.createElement('label');
+        label.setAttribute('for', 'item');
+
+
+        ul.appendChild(label)
+        li.appendChild(input)
+        label.appendChild(textnode)
+        li.appendChild(label)
+        ul.insertBefore(li, ul.childNodes[0])
+
+        setTimeout(() => {
+            li.className = 'visual'
+        }, 2);
+
+        first.value = ''
+    }
+
 }
 
 
